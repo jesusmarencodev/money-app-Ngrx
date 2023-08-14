@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "test-un-9f816": {
+      "hosting": {
+        "money-app-ngrx": [
+          "test-un-9f816"
+        ]
+      }
+    }
+  }
+}
