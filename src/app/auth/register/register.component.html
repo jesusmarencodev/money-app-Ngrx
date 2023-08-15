@@ -69,8 +69,18 @@
                 [disabled]="formGroup.invalid"
                 type="submit"
                 class="btn btn-primary submit-btn btn-block"
+                *ngIf="!charging"
               >
                 Create Account
+              </button>
+              <button
+                [disabled]="formGroup.invalid"
+                type="submit"
+                class="btn btn-primary submit-btn btn-block"
+                *ngIf="charging"
+              >
+              <i class="fa fa-spin fa-sync"></i>
+                Charging
               </button>
             </div>
             <div class="text-block text-center my-3">
