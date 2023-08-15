@@ -7,7 +7,7 @@ import * as inOut from './in-out/in-out.reducer';
 export interface AppState {
    ui: ui.State,
    user: user.State,
-   inOut:inOut.State
+   // inOut:inOut.State
 }
 
 
@@ -15,5 +15,5 @@ export interface AppState {
 export const appReducers: ActionReducerMap<AppState> = {
    ui: ui.uiReducer,
    user: user.authReducer,
-   inOut:inOut.inOutReducer
+   // inOut:inOut.inOutReducer
 }
