@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
 import * as authActions from '../auth/auth.actions';
 import { Subscription } from 'rxjs';
+import { unSetItems } from '../in-out/in-out.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,11 @@ export class AuthService {
     private fireStore: AngularFirestore,
     private store: Store<AppState>
   ) {}
+
+  get user(){
+    return {...this._user};
+  }
+
   initAuthListener() {
     this.auth.authState.subscribe((fuser) => {
       if (fuser) {
@@ -34,6 +40,7 @@ export class AuthService {
         this._user = null;
         this.userSubscription?.unsubscribe();
         this.store.dispatch(authActions.unSetUser());
+        this.store.dispatch(unSetItems());
       }
     });
   }

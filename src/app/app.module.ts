@@ -22,6 +22,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { OrderInOutPipe } from './pipes/order-in-out.pipe';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    OrderInOutPipe,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireAuthModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
-      maxAge: 25, 
+      maxAge: 25,
       logOnly: environment.production,
     }),
   ],
