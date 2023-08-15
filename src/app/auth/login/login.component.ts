@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.reducer';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +12,13 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
+  charging: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private readonly authService: AuthService,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
@@ -22,6 +26,8 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
+
+    this.store.select('ui').subscribe((ui) => (this.charging = ui.isLoading));
   }
 
   login() {
